@@ -1,5 +1,8 @@
 # The Simplest Chrome Extension
 
+- Example 1: `plain-js-extension`
+- Example 2: `npm-js-extension`
+
 ### Introduction
 
 The project introduced several javascript files that are important to the extension and played different roles.
@@ -13,20 +16,23 @@ The project introduced several javascript files that are important to the extens
 
 ### CAUTION! Injecting code into the active tab of the webpage
 [Reference Link](https://stackoverflow.com/questions/9515704/access-variables-and-functions-defined-in-page-context-using-a-content-script/9517879#9517879)
-Inject a javascript file rather than just a snippet of code, and it's compatible in Manifest V3.
+said that it injects a javascript file rather than just a snippet of code, and it's compatible in Manifest V3.
 
 In `content_script.js` file, the code like below:
 ```
 var s = document.createElement('script');
-s.src = chrome.runtime.getURL('inject-script.js');
-s.onload = function() { this.remove(); };
+s.src = chrome.runtime.getURL('inpage.js');
+s.onload = function() { 
+  // As a best practice in script injection, you should always clean up after yourself and avoid leaving unnecessary artifacts in the DOM whenever possible.
+  this.remove(); 
+};
 (document.head || document.documentElement).appendChild(s);
 ```
 
-The `inject-script.js` must be defined in the manifest.json
+The `inpage.js` must be defined in the manifest.json
 ```
 "web_accessible_resources": [{
-  "resources": ["inject-script.js"],
+  "resources": ["inpage.js"],
   "matches": ["<all_urls>"]
 }]
 ```
