@@ -1,0 +1,5 @@
+{
+  "ignore": [
+    "**/node_modules/(?!stream-browserify|crypto-browserify|stream-http|https-browserify|os-browserify|buffer).+\\.js$"
+  ]
+}

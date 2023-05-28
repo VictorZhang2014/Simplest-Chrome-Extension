@@ -1,0 +1,43 @@
+{
+  "name": "Simple Chrome Extension",
+  "description": "The simplest Chrome extension boilerplate based-on Manifest V3.",
+  "homepage_url": "https://github.com/VictorZhang2014/Simple-Chrome-Extension",
+  "version": "0.0.1",
+  "manifest_version": 3,
+  "action": {
+    "default_title": "Simple Extension"
+  },
+  "content_scripts": [
+    {
+      "run_at" : "document_start",
+      "js": ["before.js"],
+      "matches": [
+        "https://*/*",
+        "http://*/*"
+      ]
+    },
+    {
+      "run_at" : "document_idle",
+      "js": ["after.js"],
+      "matches": [
+        "https://*/*",
+        "http://*/*"
+      ]
+    }
+  ],
+  "background": {
+    "service_worker": "background.js"
+  },
+  "permissions": [
+    "tabs",
+    "scripting"
+  ],
+  "host_permissions": [
+    "https://*/*",
+    "http://*/*"
+  ],
+  "web_accessible_resources": [{
+    "resources": ["inpage.js"],
+    "matches": ["<all_urls>"]
+  }]
+}

@@ -1,0 +1,43 @@
+{
+  "name": "Simple Chrome Extension with NPM",
+  "description": "The simplest Chrome extension boilerplate based-on Manifest V3.",
+  "homepage_url": "https://github.com/VictorZhang2014/Simple-Chrome-Extension",
+  "version": "0.0.1",
+  "manifest_version": 3,
+  "action": {
+    "default_title": "Simple Extension with NPM"
+  },
+  "content_scripts": [
+    {
+      "run_at" : "document_start",
+      "js": ["ext/before.js"],
+      "matches": [
+        "https://*/*",
+        "http://*/*"
+      ]
+    },
+    {
+      "run_at" : "document_idle",
+      "js": ["ext/after.js"],
+      "matches": [
+        "https://*/*",
+        "http://*/*"
+      ]
+    }
+  ],
+  "background": {
+    "service_worker": "ext/background.js"
+  },
+  "permissions": [
+    "tabs",
+    "scripting"
+  ],
+  "host_permissions": [
+    "https://*/*",
+    "http://*/*"
+  ],
+  "web_accessible_resources": [{
+    "resources": ["ext/inpage.js"],
+    "matches": ["<all_urls>"]
+  }]
+}
