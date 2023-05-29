@@ -5,6 +5,8 @@
 
 ### Introduction
 
+![](./images/flow-chart-of-chrome-extension.png)
+
 The project introduced several javascript files that are important to the extension and played different roles.
   - `before.js`, will be running at the start of the webpage (Note that, it is the active webpage you're accessing instead of the extension page. This is before the `DOMContentLoaded` event).
   - `after.js`, will be running at end of the webpage (Note that, the scripts run after the window's load event. This means the scripts run after the entire page has finished loading, including all synchronous and asynchronous scripts.)
