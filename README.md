@@ -44,4 +44,13 @@ The `inpage.js` must be defined in the manifest.json
 To learn more examples on how to develop Chrome extension, referred to the [Github repo](https://github.com/GoogleChrome/chrome-extensions-samples).
 
 
+### The Caveats for Firefox Manifest
+The standard specification of manifest.json file is identical to the Chrome, Brave, Opera broswers, but Firefox is different and it needs some slightly changes to the json file. The best practice to use extension on Firefox browser, I suggest you can check the validity of your extension by using the tool `addons-linter`.
+
+Github repo: https://github.com/mozilla/addons-linter
+
+you can install the tool into global environment with the command `npm install -g addons-linter`
+
+finally, you need to package your extension by using the command `web-ext` which is published and maintained by Firefox.
+Here is the introduction https://extensionworkshop.com/documentation/develop/getting-started-with-web-ext/
 
